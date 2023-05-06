@@ -1,0 +1,100 @@
+:root {
+  --p-color-01: #717171;
+  --p-color-02: #595959;
+  --p-color-03: #404040;
+  --p-color-04: #2e2e2e;
+  --p-color-05: #1a1a1a;
+  --p-color-06: #9c9c9c;
+
+  --s-color-01: #f7f7f7;
+  --s-color-02: #ededed;
+  --s-color-03: #dedede;
+  --s-color-04: #cccccc;
+  --s-color-05: #b2b2b2;
+  --s-color-06: #9c9c9c;
+
+  --red-01: #d94d4d;
+  --red-02: #d97979;
+  --yellow-01: #f0ca81;
+  --yellow-02: #f4d291;
+  --green-01: #b8ebb0;
+  --green-02: #d2f1cd;
+}
+
+/* primary colors */
+
+.color-p1 {
+  color: var(--p-color-01);
+}
+
+.color-p2 {
+  color: var(--p-color-02);
+}
+
+.color-p3 {
+  color: var(--p-color-03);
+}
+
+.color-p4 {
+  color: var(--p-color-04);
+}
+
+.color-p5 {
+  color: var(--p-color-05);
+}
+
+.color-p6 {
+  color: var(--p-color-06);
+}
+
+/* secundary colors */
+
+.color-s1 {
+  color: var(--s-color-01);
+}
+
+.color-s2 {
+  color: var(--s-color-02);
+}
+
+.color-s3 {
+  color: var(--s-color-03);
+}
+
+.color-s4 {
+  color: var(--s-color-04);
+}
+
+.color-s5 {
+  color: var(--s-color-05);
+}
+
+.color-s6 {
+  color: var(--s-color-06);
+}
+
+/* status color */
+
+.color-red1 {
+  color: var(--red-01);
+}
+
+.color-red2 {
+  color: var(--red-02);
+}
+
+.color-yellow1 {
+  color: var(--yellow-01);
+}
+
+.color-yellow2 {
+  color: var(--yellow-02);
+}
+
+.color-green1 {
+  color: var(--green-01);
+}
+
+.color-green2 {
+  color: var(--green-02);
+}
