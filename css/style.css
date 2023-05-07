@@ -3,6 +3,7 @@
 @import "./utility/colors.css";
 @import "./global/header.css";
 @import "./global/home.css";
-@import "./cards/card.css"
+@import "./cards/card.css";
+@import "./cards/inputs.css";
 
 
