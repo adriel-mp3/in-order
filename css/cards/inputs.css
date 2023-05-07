@@ -1,0 +1,28 @@
+.name-kanban {
+  display: inline-block;
+  transition: .3s;
+  cursor: pointer;
+}
+
+.name-kanban:hover {
+  background: var(--s-color-06);
+  padding: 10px;
+}
+
+.name-kanban:focus {
+  color: var(--p-color-03);
+  padding: 10px;
+  outline: none;
+  background: var(--s-color-06);
+  cursor: text;
+}
+
+.add-btn {
+  width:100%;
+  padding: 8px;
+  border: 1px solid var(--p-color-05);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, .25);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

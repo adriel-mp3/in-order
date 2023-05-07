@@ -35,3 +35,7 @@ img {
   margin: 0 auto;
   padding: 0 20px;
 }
+
+.b-r5 {
+  border-radius: 5px;
+}
