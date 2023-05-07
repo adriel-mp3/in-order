@@ -1,5 +1,6 @@
 .name-kanban {
   display: inline-block;
+  margin-right: 8px;
   transition: .3s;
   cursor: pointer;
 }
