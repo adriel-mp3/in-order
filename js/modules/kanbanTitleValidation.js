@@ -1,7 +1,6 @@
 export function validateKanbanTitleInput() {
   const inputKanbanName = document.querySelector('[data-input="kanban"]');
-  const errorSpan = document.createElement("span");
-  const initialContent = inputKanbanName.innerHTML.replace(/&nbsp;/g, "");;
+  const initialContent = inputKanbanName.innerHTML.replace(/&nbsp;/g, "");
   
   function handleUserType() {
     const inputText = inputKanbanName.innerHTML.replace(/&nbsp;/g, "");
@@ -9,27 +8,33 @@ export function validateKanbanTitleInput() {
     const minLength = 1;
   
     if (inputLength < minLength) {
-      resetInputAndAddError(minLength);
+      resetInputAndAddError();
     }
   }
   
-  function resetInputAndAddError(minLength) {
+  function resetInputAndAddError() {
     inputKanbanName.innerHTML = initialContent;
-    addSpanError(minLength);
+    addSpanError();
   }
-  
-  function addSpanError(minLength) {
+
+  function addSpanError() {
+    const errorSpan = createErrorSpan();
+    inputKanbanName.insertAdjacentElement("afterend", errorSpan);
+    setTimeout(() => {
+      removeSpanError(errorSpan)
+    }, 2500);
+  }
+
+  function createErrorSpan() {
+    const errorSpan = document.createElement("span");
     errorSpan.style.opacity = 1;
     errorSpan.style.transition = ".3s";
     errorSpan.classList.add("font-1-s", "color-red1");
-    errorSpan.textContent = `Your Kanban Title has a minimum of ${minLength} character.`;
-    inputKanbanName.insertAdjacentElement("afterend", errorSpan);
-    setTimeout(() => {
-      removeSpanError()
-    }, 2500);
+    errorSpan.textContent = `Your Kanban Title has a minimum of 1 character.`;
+    return errorSpan
   }
   
-  function removeSpanError() {
+  function removeSpanError(errorSpan) {
     errorSpan.style.opacity = 0;
   }
   
@@ -42,5 +47,3 @@ export function validateKanbanTitleInput() {
   inputKanbanName.addEventListener("blur", handleUserType);
   inputKanbanName.addEventListener('keydown', handleKeyInput);
 }
-
-
