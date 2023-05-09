@@ -4,6 +4,7 @@
 @import "./global/header.css";
 @import "./global/home.css";
 @import "./cards/card.css";
+@import "./cards/drag-effects.css";
 @import "./cards/inputs.css";
 
 
