@@ -28,9 +28,9 @@
       <!-- To Do -->
       <div class="card b-r5">
         <h2 class="card-title font-1-x color-p2">Todo</h2>
-        
+
         <div class="font-1-m color-p2" data-drag="zone">
-          
+
           <div class="card-content b-r5" draggable="true" data-drag="item">
             <div class="card-config">
               <span class="card-status high font-1-s color-s3 b-r5">High</span>
@@ -78,30 +78,30 @@
 
         <div class="font-1-m color-p2" data-drag="zone">
 
-        <div class="card-content b-r5" draggable="true" data-drag="item">
-          <div class="card-config">
-            <span class="card-status high font-1-s color-s3">High</span>
-            <button class="edit-btn">
-              <img src="./img/edit.svg" alt="Edit button">
-            </button>
+          <div class="card-content b-r5" draggable="true" data-drag="item">
+            <div class="card-config">
+              <span class="card-status high font-1-s color-s3">High</span>
+              <button class="edit-btn">
+                <img src="./img/edit.svg" alt="Edit button">
+              </button>
+            </div>
+            <p class="card-description font-1-m color-p2">Add the drag-and-drop events</p>
+            <span class="font-1-s color-p2">May, 2023</span>
           </div>
-          <p class="card-description font-1-m color-p2">Add the drag-and-drop events</p>
-          <span class="font-1-s color-p2">May, 2023</span>
-        </div>
-        <div class="card-content b-r5" draggable="true" data-drag="item">
-          <div class="card-config">
-            <span class="card-status medium font-1-s color-p3">Medium</span>
-            <button class="edit-btn">
-              <img src="./img/edit.svg" alt="Edit button">
-            </button>
+          <div class="card-content b-r5" draggable="true" data-drag="item">
+            <div class="card-config">
+              <span class="card-status medium font-1-s color-p3">Medium</span>
+              <button class="edit-btn">
+                <img src="./img/edit.svg" alt="Edit button">
+              </button>
+            </div>
+            <p class="card-description font-1-m color-p2">Finish the project first sprint</p>
+            <span class="font-1-s color-p2">May, 2023</span>
           </div>
-          <p class="card-description font-1-m color-p2">Finish the project first sprint</p>
-          <span class="font-1-s color-p2">May, 2023</span>
+
         </div>
 
-      </div>
-        
-      <button class="add-btn font-1-s color-p2 b-r5">
+        <button class="add-btn font-1-s color-p2 b-r5">
           <img src="./img/add-card.svg" alt="Plus button">
           Add a card
         </button>
@@ -114,28 +114,28 @@
 
         <div class="font-1-m color-p2" data-drag="zone">
 
-        <div class="card-content b-r5" draggable="true" data-drag="item">
-          <div class="card-config">
-            <span class="card-status high font-1-s color-s3 b-r5">High</span>
-            <button class="edit-btn">
-              <img src="./img/edit.svg" alt="Edit button">
-            </button>
+          <div class="card-content b-r5" draggable="true" data-drag="item">
+            <div class="card-config">
+              <span class="card-status high font-1-s color-s3 b-r5">High</span>
+              <button class="edit-btn">
+                <img src="./img/edit.svg" alt="Edit button">
+              </button>
+            </div>
+            <p class="card-description font-1-m color-p2">Add the drag-and-drop events</p>
+            <span class="font-1-s color-p2">May, 2023</span>
           </div>
-          <p class="card-description font-1-m color-p2">Add the drag-and-drop events</p>
-          <span class="font-1-s color-p2">May, 2023</span>
-        </div>
-        <div class="card-content b-r5" draggable="true" data-drag="item">
-          <div class="card-config">
-            <span class="card-status medium font-1-s color-p3">Medium</span>
-            <button class="edit-btn">
-              <img src="./img/edit.svg" alt="Edit button">
-            </button>
+          <div class="card-content b-r5" draggable="true" data-drag="item">
+            <div class="card-config">
+              <span class="card-status medium font-1-s color-p3">Medium</span>
+              <button class="edit-btn">
+                <img src="./img/edit.svg" alt="Edit button">
+              </button>
+            </div>
+            <p class="card-description font-1-m color-p2">Finish the project first sprint</p>
+            <span class="font-1-s color-p2">May, 2023</span>
           </div>
-          <p class="card-description font-1-m color-p2">Finish the project first sprint</p>
-          <span class="font-1-s color-p2">May, 2023</span>
-        </div>
 
-      </div>
+        </div>
         <button class="add-btn font-1-s color-p2 b-r5">
           <img src="./img/add-card.svg" alt="Plus button">
           Add a card
@@ -144,6 +144,25 @@
     </div>
     <script type="module" src="./js/script.js"></script>
   </main>
+  <div class="card-modal">
+    <div class="modal-content b-r5">
+      <h3 class="font-2-x color-p2">Your card <img src="./img/folder.svg" alt="Folder icon"></h3>
+      <button class="modal-close-btn font-2-x color-p1 b-r5">X</button>
+      <form class="modal-form">
+        <label class="font-1-m color-p2" for="card-priority">Name</label>
+        <input class="b-r5" type="text" placeholder="Add the title of your card here" id="card-name" name="card-name">
+        <label class="font-1-m color-p2" for="card-priority">Priority</label>
+        <div class="modal-wrapper">
+          <select class="b-r5" name="card-priority" id="card-priority">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+          <button class="modal-submit-btn font-1-m color-p4 b-r5">OK</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </body>
 
 </html>
