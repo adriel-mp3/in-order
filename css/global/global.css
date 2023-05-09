@@ -14,7 +14,8 @@ h2,
 h3,
 p,
 ul,
-li {
+li,
+label {
   margin: 0;
   padding: 0;
 }
