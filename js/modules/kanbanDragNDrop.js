@@ -1,6 +1,9 @@
 export function kanbanDragAndDrop() {
-  const dragItems = document.querySelectorAll('[data-drag="item"]');
-  const dragZones = document.querySelectorAll('[data-drag="zone"');
+  
+}
+
+const dragItems = document.querySelectorAll('[data-drag="item"]');
+const dragZones = document.querySelectorAll('[data-drag="zone"');
   
   function verifyHasItems() {
     dragZones.forEach((dropzone, index) => {
@@ -24,25 +27,24 @@ export function kanbanDragAndDrop() {
   function removeEmptyStateCard(index) {
     dragZones[index].style.minWidth = 'initial';
     dragZones[index].style.padding = '0';
-  
   }
   
-  // drag item
+  // drag items calbacks
   
-  function handleDragStart() {
+  export function handleDragStart() {
     this.setAttribute('data-drag', 'dragging');
   }
   
-  function handleDrag(event) {
+  export function handleDrag() {
     verifyHasItems()
   }
   
-  function handleDragEnd() {
+  export function handleDragEnd() {
     this.removeAttribute('data-drag', 'dragging');
     verifyHasItems()
   }
   
-  // drag zone
+  // drag zone callbacks
   
   function handleDragEnter() {}
   
@@ -50,12 +52,12 @@ export function kanbanDragAndDrop() {
   
   function handleDragLeave() {
     const elementDragged = document.querySelector('[data-drag="dragging"]');
-    this.appendChild(elementDragged);
+      this.appendChild(elementDragged);
   }
   
   function handleDragDrop() {}
   
-  // drag items
+  // drag items events
   
   dragItems.forEach((dragItem) => {
     dragItem.addEventListener('dragstart', handleDragStart)
@@ -69,7 +71,7 @@ export function kanbanDragAndDrop() {
     dragItem.addEventListener('drag', handleDrag)
   })
   
-  // drag zone
+  // drag zone events
   
   dragZones.forEach((dragZone) => {
     dragZone.addEventListener('dragenter', handleDragEnter)
@@ -86,5 +88,3 @@ export function kanbanDragAndDrop() {
   dragZones.forEach((dragZone) => {
     dragZone.addEventListener('drop', handleDragDrop)
   })
-}
-
