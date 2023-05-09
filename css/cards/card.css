@@ -1,7 +1,6 @@
 .cards {
   display: flex;
   gap: 10px;
-  overflow-x: auto;
 }
 
 .card {
@@ -23,6 +22,7 @@
   min-width: 250px;
   margin-bottom: 8px;
   padding: 8px;
+  transition: .3s;
 }
 
 .card-config {
