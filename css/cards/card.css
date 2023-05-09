@@ -1,3 +1,5 @@
+@import './../utility/colors.css';
+
 .cards {
   display: flex;
   gap: 10px;
@@ -38,16 +40,19 @@
   display: block;
 }
 
-.card-status.high {
+.high {
   background: var(--red-01);
+  color: var(--s-color-01);
 }
 
-.card-status.medium {
+.medium {
   background: var(--yellow-01);
+  color: var(--color-p3);
 }
 
-.card-status.low {
+.low {
   background:  var(--green-02);
+  color: var(color-p1);
 }
 
 .card-description {
