@@ -5,7 +5,7 @@ export function kanbanDragAndDrop() {
 const dragItems = document.querySelectorAll('[data-drag="item"]');
 const dragZones = document.querySelectorAll('[data-drag="zone"');
   
-  function verifyHasItems() {
+  export function verifyHasItems() {
     dragZones.forEach((dropzone, index) => {
       const dropzoneItems = dropzone.querySelectorAll('*');
       const dropzoneIsEmpty = dropzoneItems.length === 0;
