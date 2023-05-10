@@ -11,13 +11,16 @@ const closeModalBtn = document.querySelector('[data-modal="close"]');
 const submitModalBtn = document.querySelector('[data-modal="submit"]');
 
 function openModal(index) {
+  
   modal.classList.add('active');
   newCard.index = index;
 }
 
 function closeModal(event) {
   event.preventDefault();
-  modal.classList.remove('active');
+  if(event.target === this) {
+    modal.classList.remove('active');
+  }
 }
 
 function getCardData() {
@@ -75,6 +78,7 @@ function addCardToKanban(event) {
 addCardBtns.forEach((button, index) => button.addEventListener('click', () => openModal(index)));
 
 closeModalBtn.addEventListener('click', closeModal);
-submitModalBtn.addEventListener('click', addCardToKanban)
+modal.addEventListener('click', closeModal);
+submitModalBtn.addEventListener('click', addCardToKanban);
 
             
