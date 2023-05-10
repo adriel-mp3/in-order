@@ -1,4 +1,6 @@
-import { handleDragEnd, handleDrag, handleDragStart } from './kanbanDragNDrop.js';
+import { handleDragEnd, handleDrag, handleDragStart, verifyHasItems} from './kanbanDragNDrop.js';
+import { activeDropdown, removeCard} from './cardDropdownOptions.js';
+
 export function kanbanModalCards() {
   
 }
@@ -46,8 +48,15 @@ function createCard() {
   newCardElement.innerHTML = `
   <div class="card-config">
     <span class="card-status ${newCard.priorityClass} font-1-s b-r5">${newCard.priorityName}</span>
-    <button class="edit-btn">
-      <img src="./img/edit.svg" alt="Edit button">
+    <button class="open-btn" data-dropdown="open-btn">
+      <img src="./img/trash.svg" alt="Edit button">
+      <ul class="card-options b-r5" data-dropdown="content">
+        <li>
+        <a href="#" class="font-1-s color-red2" data-dropdown="trash-btn">Remove card<a>
+        </li>
+        <li>
+        <a href="#" class="font-1-s color-p6">Cancel</a></li>
+      </ul>
     </button>
   </div>
   <p class="card-description font-1-m color-p2">${newCard.title}</p>
@@ -71,15 +80,18 @@ function getCardData() {
 }
 
 function addCardEvents(element) {
-  element.addEventListener('dragstart', handleDragStart)
-  element.addEventListener('dragend', handleDragEnd)
-  element.addEventListener('drag', handleDrag)
+  element.addEventListener('dragstart', handleDragStart);
+  element.addEventListener('dragend', handleDragEnd);
+  element.addEventListener('drag', handleDrag);
+  element.addEventListener('click', activeDropdown);
+  element.addEventListener('click', removeCard);
 }
 
 function addCardToKanban() {
   const card = createCard();
-  kanban[newCard.index].appendChild(card)
-  modal.classList.remove('active')
+  kanban[newCard.index].appendChild(card);
+  verifyHasItems();
+  modal.classList.remove('active');
 }
 
 addCardBtns.forEach((button, index) => button.addEventListener('click', () => openModal(index)));
