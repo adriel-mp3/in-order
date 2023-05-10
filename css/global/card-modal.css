@@ -42,11 +42,11 @@ input#card-name {
   padding: 8px;
   border: 1px solid var(--p-color-02);
   box-shadow: 0px 1px 2px rgba(0, 0, 0, .25);
-  margin-bottom: 16px;
+  
 }
 
 input#card-name:focus {
-  background-color:var(--s-color-03);
+  background-color:var(--s-color-0);
 }
 
 select#card-priority {
@@ -54,6 +54,10 @@ select#card-priority {
   box-shadow: 0px 1px 2px rgba(0, 0, 0, .25);
   padding: 6px;
   margin: 0;
+}
+
+label[for="card-priority"] {
+  margin-top:16px;
 }
 
 .modal-wrapper {
@@ -74,4 +78,15 @@ select#card-priority {
   top: -20px;
   background: var(--s-color-01);
 }
+
+.modal-error {
+  display: none;
+}
+
+.modal-error.active {
+  display: block;
+  padding: 4px;
+}
+
+
 

@@ -9,9 +9,10 @@ const modal = document.querySelector('[data-modal="content"]')
 const addCardBtns = document.querySelectorAll('[data-modal="open"]');
 const closeModalBtn = document.querySelector('[data-modal="close"]');
 const submitModalBtn = document.querySelector('[data-modal="submit"]');
+const cardTitleElement = document.querySelector('#card-name');
+const inputSpanError = document.querySelector('.modal-error')
 
 function openModal(index) {
-  
   modal.classList.add('active');
   newCard.index = index;
 }
@@ -20,27 +21,20 @@ function closeModal(event) {
   event.preventDefault();
   if(event.target === this) {
     modal.classList.remove('active');
+    inputSpanError.classList.remove('active')
   }
 }
 
-function getCardData() {
-  const now = new Date();
-  const month = now.getMonth();
-  const day = now.getUTCDate();
-  const year = now.getFullYear();
-  newCard.date = `${year}/${month}/${day}`;
+function validateModal() {
+  const titleContent = cardTitleElement.value
   
-  const cardTitleElement = document.querySelector('#card-name');
-  newCard.title = cardTitleElement.value;
- 
-  const cardPriorityElement = document.querySelector('#card-priority');
-  newCard.priorityClass = cardPriorityElement.value;
-  
-  newCard.priorityName = newCard.priorityClass.charAt(0).toUpperCase() + newCard.priorityClass.slice(1);
-
-  return newCard;
+  if (titleContent.length >= 1 && titleContent !== undefined) {
+    inputSpanError.classList.remove('active')
+    addCardToKanban();
+    cardTitleElement.value = ""
+  }
+    inputSpanError.classList.add('active')
 }
-
 
 function createCard() {  
   const newCardElement = document.createElement('div');
@@ -62,23 +56,37 @@ function createCard() {
   return newCardElement;
 }
 
+function getCardData() {
+  const now = new Date();
+  const month = now.getMonth();
+  const day = now.getUTCDate();
+  const year = now.getFullYear();
+  const cardPriorityElement = document.querySelector('#card-priority');
+
+  newCard.date = `${year}/${month}/${day}`;
+  newCard.title = cardTitleElement.value;
+  newCard.priorityClass = cardPriorityElement.value;
+  newCard.priorityName = newCard.priorityClass.charAt(0).toUpperCase() + newCard.priorityClass.slice(1);
+  return newCard;
+}
+
 function addCardEvents(element) {
   element.addEventListener('dragstart', handleDragStart)
   element.addEventListener('dragend', handleDragEnd)
   element.addEventListener('drag', handleDrag)
 }
 
-function addCardToKanban(event) {
-  event.preventDefault()
+function addCardToKanban() {
   const card = createCard();
   kanban[newCard.index].appendChild(card)
-  modal.classList.remove('active');
+  modal.classList.remove('active')
 }
 
 addCardBtns.forEach((button, index) => button.addEventListener('click', () => openModal(index)));
 
 closeModalBtn.addEventListener('click', closeModal);
 modal.addEventListener('click', closeModal);
-submitModalBtn.addEventListener('click', addCardToKanban);
+submitModalBtn.addEventListener('click', validateModal);
+
 
             
