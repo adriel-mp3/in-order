@@ -1,0 +1,33 @@
+.open-btn {
+  position: relative;
+}
+.open-btn.active .card-options {
+  display: block;
+}
+
+.card-options {
+  position: absolute;
+  display:none;
+  top: 20px;
+  padding: 8px;
+  width: 80px;
+  background: var(--s-color-01);
+  border: 1px solid var(--s-color-03);
+  box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.card-options li + li {
+  margin-top: 4px;
+}
+
+.card-options li + li {
+  border-top: 1px solid var(--s-color-02);
+  padding-top:4px;
+}
+
+.card-options a {
+ text-align: center;
+ padding: 4px;
+}
+
+
