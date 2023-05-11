@@ -12,7 +12,7 @@ const addCardBtns = document.querySelectorAll('[data-modal="open"]');
 const closeModalBtn = document.querySelector('[data-modal="close"]');
 const submitModalBtn = document.querySelector('[data-modal="submit"]');
 const cardTitleElement = document.querySelector('#card-name');
-const inputSpanError = document.querySelector('.modal-error')
+const inputSpanError = document.querySelector('.modal-error');
 
 function openModal(index) {
   modal.classList.add('active');
@@ -33,6 +33,7 @@ function validateModal() {
   if (titleContent.length >= 1 && titleContent !== undefined) {
     inputSpanError.classList.remove('active');
     addCardToKanban();
+    addCardOptions();
     cardTitleElement.value = "";
   } else {
     inputSpanError.classList.add('active');
@@ -45,7 +46,7 @@ function createCard() {
   newCardElement.setAttribute('draggable','true');
   newCardElement.setAttribute('data-drag','item');
   getCardData();
-  addCardEvents(newCardElement);
+  addCardDragEvents(newCardElement);
   newCardElement.innerHTML = `
   <div class="card-config">
     <span class="card-status ${newCard.priorityClass} font-1-s b-r5">${newCard.priorityName}</span>
@@ -80,12 +81,17 @@ function getCardData() {
   return newCard;
 }
 
-function addCardEvents(element) {
+function addCardDragEvents(element) {
   element.addEventListener('dragstart', handleDragStart);
   element.addEventListener('dragend', handleDragEnd);
   element.addEventListener('drag', handleDrag);
-  element.addEventListener('click', activeDropdown);
-  element.addEventListener('click', removeCard);
+}
+
+function addCardOptions() {
+  const dropdownOptions = kanban[newCard.index].lastChild.querySelector('[data-dropdown="open-btn"]');
+  const trashBtn = kanban[newCard.index].lastChild.querySelector('[data-dropdown="trash-btn"]');
+  dropdownOptions.addEventListener('click', activeDropdown);
+  trashBtn.addEventListener('click', removeCard);
 }
 
 function addCardToKanban() {
@@ -100,6 +106,4 @@ addCardBtns.forEach((button, index) => button.addEventListener('click', () => op
 closeModalBtn.addEventListener('click', closeModal);
 modal.addEventListener('click', closeModal);
 submitModalBtn.addEventListener('click', validateModal);
-
-
-            
+  
