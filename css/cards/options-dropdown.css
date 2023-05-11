@@ -1,5 +1,12 @@
 .open-btn {
   position: relative;
+  transition: .3s;
+  border-radius: 5px;
+}
+
+.open-btn:hover {
+  background: var(--s-color-04);
+  padding: 4px;
 }
 .open-btn.active .card-options {
   display: block;
@@ -14,6 +21,7 @@
   background: var(--s-color-01);
   border: 1px solid var(--s-color-03);
   box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.05);
+  transition: .3s;
 }
 
 .card-options li + li {
@@ -28,6 +36,11 @@
 .card-options a {
  text-align: center;
  padding: 4px;
+ border-radius: 5px;
+}
+
+.card-options a:hover {
+  background: var(--s-color-02);
 }
 
 
