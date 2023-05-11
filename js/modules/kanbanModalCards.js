@@ -23,7 +23,7 @@ function closeModal(event) {
   event.preventDefault();
   if(event.target === this) {
     modal.classList.remove('active');
-    inputSpanError.classList.remove('active')
+    inputSpanError.classList.remove('active');
   }
 }
 
@@ -31,11 +31,12 @@ function validateModal() {
   const titleContent = cardTitleElement.value
   
   if (titleContent.length >= 1 && titleContent !== undefined) {
-    inputSpanError.classList.remove('active')
+    inputSpanError.classList.remove('active');
     addCardToKanban();
-    cardTitleElement.value = ""
+    cardTitleElement.value = "";
+  } else {
+    inputSpanError.classList.add('active');
   }
-    inputSpanError.classList.add('active')
 }
 
 function createCard() {  
@@ -43,8 +44,8 @@ function createCard() {
   newCardElement.classList.add('card-content','b-r5');
   newCardElement.setAttribute('draggable','true');
   newCardElement.setAttribute('data-drag','item');
-  getCardData()
-  addCardEvents(newCardElement)
+  getCardData();
+  addCardEvents(newCardElement);
   newCardElement.innerHTML = `
   <div class="card-config">
     <span class="card-status ${newCard.priorityClass} font-1-s b-r5">${newCard.priorityName}</span>
@@ -60,7 +61,7 @@ function createCard() {
     </button>
   </div>
   <p class="card-description font-1-m color-p2">${newCard.title}</p>
-  <span class="font-1-s color-p2">${newCard.date}</span> `
+  <span class="font-1-s color-p2">${newCard.date}</span> `;
  
   return newCardElement;
 }
