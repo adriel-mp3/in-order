@@ -21,7 +21,7 @@ export function validateKanbanTitleInput() {
     const errorSpan = createErrorSpan();
     inputKanbanName.insertAdjacentElement("afterend", errorSpan);
     setTimeout(() => {
-      removeSpanError(errorSpan)
+      removeSpanError(errorSpan);
     }, 2500);
   }
 
@@ -40,10 +40,35 @@ export function validateKanbanTitleInput() {
   
   function handleKeyInput(event) {
     if (event.code === 'Enter') {
-      event.preventDefault()
+      event.preventDefault();
     }
   }
   
   inputKanbanName.addEventListener("blur", handleUserType);
   inputKanbanName.addEventListener('keydown', handleKeyInput);
+}
+
+import { getNewCardData } from "./cardsData.js";
+
+const inputSpanError = document.querySelector('.modal-error');
+
+function addModalTitleSpanError() {
+  inputSpanError.classList.add('active');
+}
+
+export function removeModalTitleSpanError() {
+  inputSpanError.classList.remove('active');
+}
+
+export function validateModal() {
+  const cardData = getNewCardData();
+  const cardTitle = cardData.title;
+  const isValidate = cardTitle.length >= 1 && cardTitle !== undefined;
+  if (isValidate) {
+    removeModalTitleSpanError()
+    cardData.title = "";
+    return true
+  } 
+    addModalTitleSpanError();
+    return false
 }
