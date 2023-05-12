@@ -6,6 +6,43 @@ export const newCardData = {
   priorityName: "",
 };
 
+export const kanbanData = {
+  toDoCards: [
+    {
+      index: 0,
+      date: `0000/00/00`,
+      title: "Card 1",
+      priorityClass: "high",
+      priorityName: "Low",
+    },
+    {
+      index: 0,
+      date: `0000/00/00`,
+      title: "Card 1",
+      priorityClass: "high",
+      priorityName: "Low",
+    }
+  ],
+  pendingCards: [
+    {
+      index: 0,
+      date: `0000/00/00`,
+      title: "Card 2",
+      priorityClass: "medium",
+      priorityName: "Low",
+    },
+  ],
+  doneCards: [
+    {
+      index: 0,
+      date: `0000/00/00`,
+      title: "Card 3",
+      priorityClass: "low",
+      priorityName: "Low",
+    },
+  ],
+};
+
 const now = new Date();
 const month = now.getMonth();
 const day = now.getUTCDate();

@@ -1,11 +1,7 @@
-import { createGreetingMessage } from "./modules/displayGreetingMessage.js";
-import { validateKanbanTitleInput } from "./modules/kanbanInputsValidation.js";
-import { kanbanModalCards } from "./modules/kanbanModalCards.js";
-import { cardDropdownOptions } from "./modules/cardDropdownOptions.js";
-import { verifyHasCards } from './modules/kanbanDragNDrop.js';
+import { createGreetingMessage } from "./modules/display-greetings.js";
+import { validateKanbanTitleInput } from "./modules/kanban-inputs-validation.js";
+import { verifyHasCards } from "./modules/cards-functions.js";
 
 createGreetingMessage();
 validateKanbanTitleInput();
 verifyHasCards();
-kanbanModalCards();
-cardDropdownOptions();

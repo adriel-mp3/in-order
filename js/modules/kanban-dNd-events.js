@@ -1,7 +1,7 @@
-import { verifyHasCards } from './kanbanDragNDrop.js';
+import { verifyHasCards } from './cards-functions.js';
 
 const dragItems = document.querySelectorAll('[data-drag="item"]');
-const dragZones = document.querySelectorAll('[data-drag="zone"');
+const dragZones = document.querySelectorAll('[data-drag="zone"]');
 
 export function addCardDragEvents(element) {
   element.addEventListener('dragstart', handleDragStart);
@@ -21,7 +21,6 @@ export function handleDrag() {
 
 export function handleDragEnd() {
   this.removeAttribute('data-drag', 'dragging');
-  verifyHasCards();
 };
 
 // drag items events
@@ -40,16 +39,23 @@ dragItems.forEach((dragItem) => {
 
 // drag zone callbacks
 
-function handleDragEnter() {}
+function handleDragEnter() {
+  console.log('dragEnter')
+}
 
-function handleDragOver() {}
+function handleDragOver(event) {
+  event.preventDefault()
+  console.log('over');
+}
 
 function handleDragLeave() {
   const elementDragged = document.querySelector('[data-drag="dragging"]');
-    this.appendChild(elementDragged);
+  this.appendChild(elementDragged);
 }
 
-function handleDragDrop() {}
+function handleDragDrop() {
+  verifyHasCards();
+}
 
 // drag zone events
 
