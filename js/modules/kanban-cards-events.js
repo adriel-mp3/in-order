@@ -3,13 +3,7 @@ import { verifyHasCards } from './cards-functions.js';
 const dragItems = document.querySelectorAll('[data-drag="item"]');
 const dragZones = document.querySelectorAll('[data-drag="zone"]');
 
-export function addCardDragEvents(element) {
-  element.addEventListener('dragstart', handleDragStart);
-  element.addEventListener('dragend', handleDragEnd);
-  element.addEventListener('drag', handleDrag);
-}
-
-// drag items calbacks
+// drag items callbacks and listeners 
 
 export function handleDragStart() {
   this.setAttribute('data-drag', 'dragging');
@@ -23,8 +17,6 @@ export function handleDragEnd() {
   this.removeAttribute('data-drag', 'dragging');
 };
 
-// drag items events
-
 dragItems.forEach((dragItem) => {
   dragItem.addEventListener('dragstart', handleDragStart);
 })
@@ -37,15 +29,13 @@ dragItems.forEach((dragItem) => {
   dragItem.addEventListener('drag', handleDrag);
 })
 
-// drag zone callbacks
+// drag zone callbacks and listeners 
 
 function handleDragEnter() {
-  console.log('dragEnter')
 }
 
 function handleDragOver(event) {
   event.preventDefault()
-  console.log('over');
 }
 
 function handleDragLeave() {
@@ -56,8 +46,6 @@ function handleDragLeave() {
 function handleDragDrop() {
   verifyHasCards();
 }
-
-// drag zone events
 
 dragZones.forEach((dragZone) => {
   dragZone.addEventListener('dragenter', handleDragEnter);
@@ -74,6 +62,22 @@ dragZones.forEach((dragZone) => {
 dragZones.forEach((dragZone) => {
   dragZone.addEventListener('drop', handleDragDrop);
 })
+
+export function addCardDragEvents(element) {
+  element.addEventListener('dragstart', handleDragStart);
+  element.addEventListener('dragend', handleDragEnd);
+  element.addEventListener('drag', handleDrag);
+  element.addEventListener('drop', handleDragDrop);
+}
+
+// dropdown callbacks and listeners 
+
+export function addCardDropdownEvents(element) {
+  const dropdownOptions = element.querySelector('[data-dropdown="open-btn"]');
+  const trashBtn = element.querySelector('[data-dropdown="trash-btn"]');
+  dropdownOptions.addEventListener("click", activeDropdown);
+  trashBtn.addEventListener("click", removeCard);
+}
 
 
 
