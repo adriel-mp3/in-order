@@ -1,10 +1,10 @@
-import { newCardData, getNewCardData } from "./cards-data.js";
-import { addCardDragEvents } from "./kanban-dNd-events.js";
+import { getModalCardData } from "./cards-data.js";
+import { addCardDragEvents, addCardDropdownEvents } from "./kanban-cards-events.js";
 import { validateModal } from "./kanban-inputs-validation.js";
 import { verifyHasCards, activeDropdown, removeCard } from "./cards-functions.js";
 import { closeKanbanModal } from "./kanban-modal.js";
 
-export function createCardWrapperElement() {
+function createCardWrapper() {
   const cardWrapper = document.createElement("div");
   cardWrapper.classList.add("card-wrapper", "b-r5");
   cardWrapper.setAttribute("draggable", "true");
@@ -12,10 +12,11 @@ export function createCardWrapperElement() {
   return cardWrapper;
 }
 
-export function addCardContentToWrapper(cardWrapper) {
-  cardWrapper.innerHTML = `
+export function createCardComponent({ title, date, priorityClass, priorityName }) {
+  const cardComponent = createCardWrapper();
+  const cardContent = `
   <div class="card-config">
-    <span class="card-status ${newCardData.priorityClass} font-1-s b-r5">${newCardData.priorityName}
+    <span class="card-status ${priorityClass} font-1-s b-r5">${priorityName}
     </span>
     <button class="open-btn" data-dropdown="open-btn">
       <img src="./img/trash.svg" alt="Edit button">
@@ -29,44 +30,38 @@ export function addCardContentToWrapper(cardWrapper) {
     </ul>
     </button>
   </div>
-  <p class="card-description font-1-m color-p2">${newCardData.title}</p>
-  <span class="font-1-s color-p2">${newCardData.date}</span> `;
-  return cardWrapper;
+  <p class="card-description font-1-m color-p2">${title}</p>
+  <span class="font-1-s color-p2">${date}</span> `;
+  cardComponent.innerHTML = cardContent;
+  return cardComponent;
 }
 
-export function renderCard() {
-  const newCardWrapper = createCardWrapperElement();
-  getNewCardData();
-  addCardContentToWrapper(newCardWrapper);
-  addCardDragEvents(newCardWrapper);
-  return newCardWrapper;
-}
-
-export function insertCard() {
-  const isValidate = validateModal();
-  if (isValidate) {
-    addCardToKanban();
-    addCardOptions();
-    closeKanbanModal();
-  }
+export function setCardData(data) {
+  const cardData = getModalCardData();
+  return  data || cardData
 }
 
 const cardsWrapper = document.querySelectorAll(".cards-wrapper");
 
-export function addCardToKanban() {
-  const card = renderCard();
-  cardsWrapper[newCardData.index].appendChild(card);
-  verifyHasCards();
-  closeKanbanModal();
+export function insertCard() {
+  const isValidate = validateModal();
+  const cardData = setCardData();
+  const card = createCardComponent(cardData);
+  const cardsWrapper = document.querySelector('[data-wrapper="active"]');
+  if (isValidate) {
+    addCard(card, cardsWrapper);
+    closeKanbanModal();
+  }
 }
 
-function addCardOptions() {
-  const dropdownOptions = cardsWrapper[
-    newCardData.index
-  ].lastChild.querySelector('[data-dropdown="open-btn"]');
-  const trashBtn = cardsWrapper[newCardData.index].lastChild.querySelector(
-    '[data-dropdown="trash-btn"]'
-  );
-  dropdownOptions.addEventListener("click", activeDropdown);
-  trashBtn.addEventListener("click", removeCard);
+export function addCard(card, cardsWrapper) {
+  cardsWrapper.appendChild(card);
+  addCardEvents(card);
+  verifyHasCards();
+}
+
+
+function addCardEvents(element) {
+  addCardDragEvents(element);
+  addCardDropdownEvents(element);
 }
