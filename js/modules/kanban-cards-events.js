@@ -67,7 +67,7 @@ export function addCardDragEvents(element) {
   element.addEventListener('dragstart', handleDragStart);
   element.addEventListener('dragend', handleDragEnd);
   element.addEventListener('drag', handleDrag);
-  element.addEventListener('drop', handleDragDrop)
+  element.addEventListener('drop', handleDragDrop);
 }
 
 // dropdown callbacks and listeners 
