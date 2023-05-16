@@ -13,7 +13,6 @@
 </head>
 
 <body>
-
   <header class="header-bg">
     <nav class="nav-content container">
       <a href="#"><img src="./img/logo.svg" alt="In Order logo"></a>
@@ -25,88 +24,30 @@
       <span class="font-1-x color-p1" data-greetings></span>
     </h1>
     <p class="name-kanban font-1-x color-p2 b-r5" contenteditable spellcheck="false" data-input="kanban">What is your kanban name?</p>
-
     <!-- app -->
     <div class="cards">
-
       <!-- to do -->
       <div class="card b-r5">
         <h2 class="card-title font-1-x color-p3">Todo</h2>
-
-        <div class="cards-wrapper font-1-m" data-drag="zone">
-          <div class="card-wrapper b-r5" draggable="true" data-drag="item">
-            <div class="card-config">
-              <span class="card-status high font-1-s b-r5">High</span>
-              <button class="open-btn" data-dropdown="open-btn">
-                <img src="./img/trash.svg" alt="Edit button">
-                <ul class="card-options b-r5" data-dropdown="content">
-                  <li><a href="#" class="font-1-s color-red2" data-dropdown="trash-btn">Remove card</a></li>
-                  <li><a href="#" class="font-1-s color-p6">Cancel</a></li>
-                </ul>
-              </button>
-            </div>
-            <p class="card-description font-1-m color-p2">Add the drag-and-drop events</p>
-            <span class="font-1-s color-p2">May, 2023</span>
-          </div>
-        </div>
-
+        <div class="cards-wrapper font-1-m" data-drag="zone"  data-kanban="0"></div>
         <button class="add-btn font-1-s color-p2 b-r5" data-modal="open">
           <img src="./img/add-card.svg" alt="Plus button">
           Add a card
         </button>
-
       </div>
-
-      <!-- Doing -->
+      <!-- doing -->
       <div class="card b-r5">
         <h2 class="card-title font-1-x color-p3">Doing</h2>
-
-        <div class="cards-wrapper font-1-m" data-drag="zone">
-          <div class="card-wrapper b-r5" draggable="true" data-drag="item">
-            <div class="card-config">
-              <span class="card-status medium font-1-s b-r5">Medium</span>
-              <button class="open-btn" data-dropdown="open-btn">
-                <img src="./img/trash.svg" alt="Edit button">
-                <ul class="card-options b-r5" data-dropdown="content">
-                  <li><a href="#" class="font-1-s color-red2" data-dropdown="trash-btn">Remove card</a></li>
-                  <li><a href="#" class="font-1-s color-p6">Cancel</a></li>
-                </ul>
-              </button>
-            </div>
-            <p class="card-description font-1-m color-p2">Finish the project first sprint</p>
-            <span class="font-1-s color-p2">May, 2023</span>
-          </div>
-        </div>
-
+        <div class="cards-wrapper font-1-m" data-drag="zone" data-kanban="1"></div>
         <button class="add-btn font-1-s color-p2 b-r5" data-modal="open">
           <img src="./img/add-card.svg" alt="Plus button">
           Add a card
         </button>
-
       </div>
-
-      <!-- Completed -->
+      <!-- completed -->
       <div class="card b-r5">
         <h2 class="card-title font-1-x color-p3">Completed</h2>
-
-        <div class="cards-wrapper font-1-m" data-drag="zone">
-
-          <div class="card-wrapper b-r5" draggable="true" data-drag="item">
-            <div class="card-config">
-              <span class="card-status low font-1-s">Low</span>
-              <button class="open-btn" data-dropdown="open-btn">
-                <img src="./img/trash.svg" alt="Edit button">
-                <ul class="card-options b-r5" data-dropdown="content">
-                  <li><a href="#" class="font-1-s color-red2" data-dropdown="trash-btn">Remove card</a></li>
-                  <li><a href="#" class="font-1-s color-p6">Cancel</a></li>
-                </ul>
-              </button>
-            </div>
-            <p class="card-description font-1-m color-p2">Read the book: Eloquent Javascript</p>
-            <span class="font-1-s color-p2">May, 2024</span>
-          </div>
-
-        </div>
+        <div class="cards-wrapper font-1-m" data-drag="zone" data-kanban="2"></div>
         <button class="add-btn font-1-s color-p2 b-r5" data-modal="open">
           <img src="./img/add-card.svg" alt="Plus button">
           Add a card
@@ -114,7 +55,6 @@
       </div>
     </div>
 
-    <script type="module" src="./js/script.js"></script>
   </main>
   <div class="card-modal" data-modal="content">
     <div class="modal-content b-r5">
@@ -136,6 +76,7 @@
       </form>
     </div>
   </div>
+  <script type="module" src="./js/script.js"></script>
 </body>
 
 </html>
