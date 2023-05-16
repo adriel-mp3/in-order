@@ -1,56 +1,54 @@
-// export const newCardData = {
-//   title: "",
-//   date: `0000/00/00`,
-//   priorityClass: "",
-//   priorityName: "",
-// };
-
 export const kanbanData = {
   toDoCards: [
-    {
-      title: "Card 1",
-      date: `0000/00/00`,
-      priorityClass: "high",
-      priorityName: "Low",
-    },
-    {
-      title: "Card 1",
-      date: `0000/00/00`,
-      priorityClass: "high",
-      priorityName: "Low",
-    }
+  
   ],
+  
   pendingCards: [
-    {
-      title: "Card 2",
-      date: `0000/00/00`,
-      priorityClass: "medium",
-      priorityName: "Low",
-    },
+   
   ],
   doneCards: [
-    {
-      title: "Card 3",
-      date: `0000/00/00`,
-      priorityClass: "low",
-      priorityName: "Low",
-    },
+  
   ],
 };
 
+
+const kanbansKeys = Object.keys(kanbanData);
+
+export const kanbanArray = kanbansKeys.map((kanban) => kanbanData[kanban]);
+export const kanbans = document.querySelectorAll('.cards-wrapper');
+export const cards = document.querySelectorAll('.card-wrapper');
+
+
 const now = new Date();
-const month = now.getMonth();
+const month = now.getMonth() + 1;
 const day = now.getUTCDate();
 const year = now.getFullYear();
-const cardTitleElementInput = document.querySelector("#card-name");
-const cardPriorityElementInput = document.querySelector("#card-priority");
 
 export function getModalCardData() {
-  newCardData.date = `${year}/${month}/${day}`;
-  newCardData.title = cardTitleElementInput.value;
-  newCardData.priorityClass = cardPriorityElementInput.value;
-  newCardData.priorityName =
-  newCardData.priorityClass.charAt(0).toUpperCase() +
-  newCardData.priorityClass.slice(1);
-  return newCardData;
+  const cardTitleElementInput = document.querySelector("#card-name");
+  const cardPriorityElementInput = document.querySelector("#card-priority");
+  const date = `${year}/${month}/${day}`;
+  const title = cardTitleElementInput.value;
+  const priorityClass = cardPriorityElementInput.value;
+  const priorityName = priorityClass.charAt(0).toUpperCase() + priorityClass.slice(1);
+
+  return {
+    title,
+    date,
+    priorityClass,
+    priorityName,
+  };
+}
+
+export function getCardData(element) {
+  const title = element.querySelector('.card-description').innerText;
+  const date = element.querySelector('.card-date').innerText;
+  const priorityName = element.querySelector('.card-status').innerText;
+  const priorityClass = priorityName.toLowerCase();
+  return {
+    title,
+    date,
+    priorityName,
+    priorityClass
+  };
 }

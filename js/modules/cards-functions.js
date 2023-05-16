@@ -1,3 +1,5 @@
+import { kanbanArray ,kanbans, cards } from "./cards-data.js";
+import { addEvents, renderData, getKanbanData } from "./render-cards.js";
 const kanbanContainer = document.querySelectorAll('[data-drag="zone"');
   
 export function verifyHasCards() {
@@ -22,7 +24,12 @@ export function activeDropdown() {
 
 export function removeCard(event) {
   if (event.currentTarget === this) {
-    event.currentTarget.closest('.card-wrapper').remove();
+    const cardIndex = [...cards].indexOf(event.currentTarget.closest('.card-wrapper'));
+    const kanbanIndex = [...kanbans].indexOf(event.currentTarget.closest('.cards-wrapper'))
+    kanbanArray[kanbanIndex].splice(cardIndex, 1);
+    renderData();
+    addEvents();
+    getKanbanData();
     verifyHasCards();
   }
 }
