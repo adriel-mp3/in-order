@@ -7,6 +7,7 @@ const cardWrappers = document.querySelectorAll('.cards-wrapper');
 
 function openModal(index) {
   modal.classList.add("active");
+  cardWrappers.forEach((wrapper) => wrapper.removeAttribute('data-wrapper','active'))
   cardWrappers[index].setAttribute('data-wrapper','active');
 }
 

@@ -1,5 +1,5 @@
-import { getModalCardData } from "./cards-data.js";
-import { insertCard } from "./kanban-create-card.js";
+import { getModalCardData, getCardData } from "./cards-data.js";
+import { submitModal } from "./create-card.js";
 
 export function validateKanbanTitleInput() {
   const inputKanbanName = document.querySelector('[data-input="kanban"]');
@@ -62,12 +62,10 @@ export function removeModalTitleSpanError() {
 }
 
 export function validateModal() {
-  const cardData = getModalCardData();
-  const cardTitle = cardData.title;
-  const isValidate = cardTitle.length >= 1 && cardTitle !== undefined;
+  const title = document.querySelector("#card-name").value;
+  const isValidate = title.length >= 1 && title !== undefined;
   if (isValidate) {
     removeModalTitleSpanError();
-    cardData.title = "";
     return true;
   }
   addModalTitleSpanError();
@@ -76,4 +74,4 @@ export function validateModal() {
 
 const submitModalBtn = document.querySelector('[data-modal="submit"]');
 
-submitModalBtn.addEventListener("click", insertCard);
+submitModalBtn.addEventListener("click", submitModal);

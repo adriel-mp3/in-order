@@ -1,20 +1,28 @@
 import { verifyHasCards } from './cards-functions.js';
+import { activeDropdown } from './cards-functions.js';
+import { removeCard } from './cards-functions.js';
+import { kanbanArray, getCardData, kanbanData} from './cards-data.js';
+import { getKanbanData, renderData, addEvents } from './render-cards.js';
 
 const dragItems = document.querySelectorAll('[data-drag="item"]');
 const dragZones = document.querySelectorAll('[data-drag="zone"]');
 
 // drag items callbacks and listeners 
-
-export function handleDragStart() {
+export function handleDragStart(event) {
   this.setAttribute('data-drag', 'dragging');
-};
-
-export function handleDrag() {
   verifyHasCards();
 };
 
-export function handleDragEnd() {
+export function handleDrag(event) {
+  
+};
+
+export function handleDragEnd(event) {
   this.removeAttribute('data-drag', 'dragging');
+  renderData();
+  addEvents();
+  localStorage.setItem("kanbans", JSON.stringify(kanbanData));
+  verifyHasCards();
 };
 
 dragItems.forEach((dragItem) => {
@@ -31,21 +39,32 @@ dragItems.forEach((dragItem) => {
 
 // drag zone callbacks and listeners 
 
-function handleDragEnter() {
+function handleDragEnter(event) {
 }
 
 function handleDragOver(event) {
-  event.preventDefault()
+  event.preventDefault();
 }
 
 function handleDragLeave() {
-  const elementDragged = document.querySelector('[data-drag="dragging"]');
-  this.appendChild(elementDragged);
+
+}
+  
+
+function handleDragDrop(event) {
+  event.stopPropagation();
+  const cardDragging = document.querySelector('[data-drag="dragging"]');
+  const kanbanActiveIndex = parseInt(cardDragging.closest('.cards-wrapper').dataset.kanban);
+  const kanbanTargetIndex = [...kanbans].indexOf(this.closest('.cards-wrapper'))
+  const cardsInKanban = document.querySelectorAll(`[data-kanban="${kanbanActiveIndex}"] .card-wrapper`);
+  const cardIndexDragging = [...cardsInKanban].indexOf(cardDragging)
+  const droppedItem = kanbanArray[kanbanActiveIndex].splice(cardIndexDragging, 1);
+  kanbanArray[kanbanTargetIndex].push(droppedItem[0]);
+  verifyHasCards();
+  addEvents();
 }
 
-function handleDragDrop() {
-  verifyHasCards();
-}
+const kanbans = document.querySelectorAll('.cards-wrapper');
 
 dragZones.forEach((dragZone) => {
   dragZone.addEventListener('dragenter', handleDragEnter);
@@ -65,7 +84,10 @@ dragZones.forEach((dragZone) => {
 
 export function addCardDragEvents(element) {
   element.addEventListener('dragstart', handleDragStart);
+  element.addEventListener('dragover', handleDragOver);
   element.addEventListener('dragend', handleDragEnd);
+  element.addEventListener('dragleave', handleDragLeave);
+  element.addEventListener('dragenter', handleDragEnter);
   element.addEventListener('drag', handleDrag);
   element.addEventListener('drop', handleDragDrop);
 }
