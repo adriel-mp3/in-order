@@ -2,8 +2,10 @@ import { submitModal } from "./create-card.js";
 
 export function validateKanbanTitleInput() {
   const inputKanbanName = document.querySelector('[data-input="kanban"]');
-  const initialContent = inputKanbanName.innerHTML.replace(/&nbsp;/g, "");
-
+  const dataKanbanName = localStorage.getItem('kanbanName');
+  const initialContent = dataKanbanName || 'What is your kanban name?';
+  inputKanbanName.innerHTML = initialContent;
+  
   function handleUserType() {
     const inputText = inputKanbanName.innerHTML.replace(/&nbsp;/g, "");
     const inputLength = inputText.length;
@@ -11,9 +13,11 @@ export function validateKanbanTitleInput() {
 
     if (inputLength < minLength) {
       addSpanError();
+    } else {
+      localStorage.setItem('kanbanName', inputText);
     }
   }
-
+ 
   function addSpanError() {
     const errorSpan = createErrorSpan();
     inputKanbanName.innerHTML = initialContent;
