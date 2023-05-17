@@ -11,13 +11,11 @@ export const kanbanData = {
   ],
 };
 
-
 const kanbansKeys = Object.keys(kanbanData);
 
 export const kanbanArray = kanbansKeys.map((kanban) => kanbanData[kanban]);
 export const kanbans = document.querySelectorAll('.cards-wrapper');
 export const cards = document.querySelectorAll('.card-wrapper');
-
 
 const now = new Date();
 const month = now.getMonth() + 1;

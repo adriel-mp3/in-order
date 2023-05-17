@@ -1,7 +1,6 @@
-import { getModalCardData, kanbanData } from "./cards-data.js";
-import { renderData, addEvents } from "./render-cards.js";
+import { getModalCardData, kanbanArray } from "./cards-data.js";
 import { validateModal } from "./kanban-inputs-validation.js";
-import { verifyHasCards } from "./cards-functions.js";
+import { prepareBoard } from "./cards-functions.js";
 import { closeKanbanModal } from "./kanban-modal.js";
 
 export function createCardComponent({
@@ -32,24 +31,16 @@ export function createCardComponent({
   return card;
 }
 
-const kanbansKeys = Object.keys(kanbanData);
-const kanbanArray = kanbansKeys.map((kanban) => kanbanData[kanban]);
 const kanbans = document.querySelectorAll(".cards-wrapper");
 
 export function submitModal() {
   const kanbanIndexActive = [...kanbans].findIndex(wrapper => wrapper.hasAttribute('data-wrapper', 'active'));
   const isValidate = validateModal();
   const cardData = getModalCardData();
-  console.log(cardData);
+  
   if (isValidate) {
     kanbanArray[kanbanIndexActive].push(cardData);
-    renderData();
-    verifyHasCards();
-    addEvents();
+    prepareBoard();
     closeKanbanModal();
   }
-}
-
-export function insertCard() {
-  
 }

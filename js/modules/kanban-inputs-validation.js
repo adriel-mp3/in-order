@@ -1,4 +1,3 @@
-import { getModalCardData, getCardData } from "./cards-data.js";
 import { submitModal } from "./create-card.js";
 
 export function validateKanbanTitleInput() {
@@ -11,13 +10,17 @@ export function validateKanbanTitleInput() {
     const minLength = 1;
 
     if (inputLength < minLength) {
-      resetInputAndAddError();
+      addSpanError();
     }
   }
 
-  function resetInputAndAddError() {
+  function addSpanError() {
+    const errorSpan = createErrorSpan();
     inputKanbanName.innerHTML = initialContent;
-    addSpanError();
+    inputKanbanName.insertAdjacentElement("afterend", errorSpan);
+    setTimeout(() => {
+      removeSpanError(errorSpan);
+    }, 2500);
   }
 
   function createErrorSpan() {
@@ -27,14 +30,6 @@ export function validateKanbanTitleInput() {
     errorSpan.classList.add("font-1-s", "color-red1");
     errorSpan.textContent = `Your Kanban Title has a minimum of 1 character.`;
     return errorSpan;
-  }
-
-  function addSpanError() {
-    const errorSpan = createErrorSpan();
-    inputKanbanName.insertAdjacentElement("afterend", errorSpan);
-    setTimeout(() => {
-      removeSpanError(errorSpan);
-    }, 2500);
   }
 
   function removeSpanError(errorSpan) {
