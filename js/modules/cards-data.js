@@ -1,5 +1,18 @@
 
-export const kanbanData = JSON.parse(localStorage.getItem('kanbans'));
+const tempData = {
+  toDoCards: [
+  ],
+  
+  pendingCards: [
+   
+  ],
+  doneCards: [
+  
+  ],
+}
+
+export const kanbanData = JSON.parse(localStorage.getItem('kanbans')) || tempData;
+
 
 const kanbansKeys = Object.keys(kanbanData);
 
