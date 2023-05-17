@@ -1,4 +1,4 @@
-import { getModalCardData, kanbanArray } from "./cards-data.js";
+import { getModalCardData, kanbanArray, kanbanData, updateData } from "./cards-data.js";
 import { validateModal } from "./kanban-inputs-validation.js";
 import { prepareBoard } from "./cards-functions.js";
 import { closeKanbanModal } from "./kanban-modal.js";
@@ -40,6 +40,7 @@ export function submitModal() {
   
   if (isValidate) {
     kanbanArray[kanbanIndexActive].push(cardData);
+    updateData();
     prepareBoard();
     closeKanbanModal();
   }

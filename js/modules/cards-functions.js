@@ -1,4 +1,4 @@
-import { kanbanArray , kanbans, cards } from "./cards-data.js";
+import { kanbanArray , kanbans, cards, updateData } from "./cards-data.js";
 import { addEvents, renderData } from "./render-cards.js";
 const kanbanContainer = document.querySelectorAll('[data-drag="zone"]');
   
@@ -27,6 +27,7 @@ export function removeCard(event) {
     const cardIndex = [...cards].indexOf(event.currentTarget.closest('.card-wrapper'));
     const kanbanIndex = [...kanbans].indexOf(event.currentTarget.closest('.cards-wrapper'))
     kanbanArray[kanbanIndex].splice(cardIndex, 1);
+    updateData();
     prepareBoard();
   }
 }
