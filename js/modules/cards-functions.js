@@ -1,6 +1,6 @@
-import { kanbanArray ,kanbans, cards } from "./cards-data.js";
-import { addEvents, renderData, getKanbanData } from "./render-cards.js";
-const kanbanContainer = document.querySelectorAll('[data-drag="zone"');
+import { kanbanArray , kanbans, cards } from "./cards-data.js";
+import { addEvents, renderData } from "./render-cards.js";
+const kanbanContainer = document.querySelectorAll('[data-drag="zone"]');
   
 export function verifyHasCards() {
     kanbanContainer.forEach((kanban, index) => {
@@ -27,10 +27,7 @@ export function removeCard(event) {
     const cardIndex = [...cards].indexOf(event.currentTarget.closest('.card-wrapper'));
     const kanbanIndex = [...kanbans].indexOf(event.currentTarget.closest('.cards-wrapper'))
     kanbanArray[kanbanIndex].splice(cardIndex, 1);
-    renderData();
-    addEvents();
-    getKanbanData();
-    verifyHasCards();
+    prepareBoard();
   }
 }
 
@@ -42,6 +39,12 @@ function addEmptyStateCard(index) {
 function removeEmptyStateCard(index) {
   kanbanContainer[index].style.minWidth = 'initial';
   kanbanContainer[index].style.padding = '0';
+}
+
+export function prepareBoard() {
+  renderData();
+  addEvents();
+  verifyHasCards();
 }
 
 dropdownBtns.forEach((button) => button.addEventListener('click', activeDropdown));
