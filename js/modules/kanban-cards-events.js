@@ -1,6 +1,6 @@
 import { prepareBoard, removeCard } from './cards-functions.js';
 import { activeDropdown } from './cards-functions.js';
-import { kanbanArray } from './cards-data.js';
+import { kanbanArray, updateData } from './cards-data.js';
 
 const dragItems = document.querySelectorAll('[data-drag="item"]');
 const dragZones = document.querySelectorAll('[data-drag="zone"]');
@@ -16,6 +16,7 @@ export function handleDrag() {
 
 export function handleDragEnd() {
   this.removeAttribute('data-drag', 'dragging');
+  updateData();
   prepareBoard();
 };
 
@@ -55,7 +56,7 @@ function handleDragDrop(event) {
   
   const droppedItem = kanbanArray[kanbanActiveIndex].splice(cardIndexDragging, 1);
   kanbanArray[kanbanTargetIndex].push(droppedItem[0]);
-  
+  updateData();
   prepareBoard();
 }
 

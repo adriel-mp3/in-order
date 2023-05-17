@@ -1,15 +1,5 @@
-export const kanbanData = {
-  toDoCards: [
-  
-  ],
-  
-  pendingCards: [
-   
-  ],
-  doneCards: [
-  
-  ],
-};
+
+export const kanbanData = JSON.parse(localStorage.getItem('kanbans'));
 
 const kanbansKeys = Object.keys(kanbanData);
 
@@ -38,15 +28,6 @@ export function getModalCardData() {
   };
 }
 
-export function getCardData(element) {
-  const title = element.querySelector('.card-description').innerText;
-  const date = element.querySelector('.card-date').innerText;
-  const priorityName = element.querySelector('.card-status').innerText;
-  const priorityClass = priorityName.toLowerCase();
-  return {
-    title,
-    date,
-    priorityName,
-    priorityClass
-  };
+export function updateData() {
+  localStorage.setItem('kanbans',JSON.stringify(kanbanData))
 }
