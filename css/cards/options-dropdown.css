@@ -45,3 +45,10 @@
 }
 
 
+@media (max-width:438px) {
+  .card-options {
+    right: 0px;
+    top: 25px;
+  }
+}
+

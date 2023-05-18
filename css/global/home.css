@@ -1,5 +1,6 @@
 .main-title {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   margin-bottom: 64px;
   gap:8px;
@@ -21,4 +22,24 @@
 
 .name-kanban {
   margin-bottom: 32px;
+}
+
+@media (max-width:620px) {
+  .main-title {
+    gap: 20px;
+    margin-bottom: 32px;
+    font-size: 3.5rem;
+  }
+
+  .name-kanban {
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+    line-height: 1.5rem;
+  }
+
+  .main-title span::before{
+    display: inline-block;
+    width: 64px;
+    height: 2px;
+  }
 }
