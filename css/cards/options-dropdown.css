@@ -14,6 +14,7 @@
 
 .card-options {
   position: absolute;
+  animation: scale .3s forwards;
   display:none;
   top: 20px;
   padding: 8px;
@@ -43,4 +44,11 @@
   background: var(--s-color-02);
 }
 
+
+@media (max-width:438px) {
+  .card-options {
+    right: 0px;
+    top: 25px;
+  }
+}
 

@@ -6,3 +6,9 @@
 .nav-content {
   padding: 16px 20px;
 }
+
+@media (max-width:360px) {
+  .header-bg {
+    margin-bottom: 16px;
+  }
+}
