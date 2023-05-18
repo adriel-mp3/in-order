@@ -1,0 +1,26 @@
+[data-drag="zone"] {
+  transition: .3s;
+}
+
+
+@keyframes down {
+  from {
+    opacity: 0;
+    transform: translate3d(0,-30px,0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0,0,0);
+  }
+}
+
+
+@keyframes scale {
+  from {
+    scale: 0.8;
+  }
+  to {
+    scale: 1;
+  }
+}
+

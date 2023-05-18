@@ -17,6 +17,7 @@
 }
 
 .modal-content {
+  animation: down .3s forwards;
   position: relative;
   padding: 16px;
   border: 1px solid var(--p-color-02);
